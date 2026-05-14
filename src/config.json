@@ -1,0 +1,14 @@
+{   
+    "vector_store":{
+        "provider": "pinecone",
+        "index_name": "start-index", 
+        "namespaces": ["internal-vectors"]
+    }, 
+    "embeddings":{
+        "model": "BAAI/bge-small-en-v1.5"
+    }, 
+    "llm":{
+        "provider": "groq",
+        "model_name": "llama-3.1-8b-instant"
+    }
+}
