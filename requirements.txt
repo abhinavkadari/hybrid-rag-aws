@@ -1,0 +1,9 @@
+langchain
+boto3
+langchain-community
+pypdf
+pinecone
+langchain-unstructured
+unstructured-client
+fastembed
+groq
