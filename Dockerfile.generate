@@ -1,0 +1,11 @@
+FROM public.ecr.aws/lambda/python:3.12
+
+# Install your AI/ML libraries
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+WORKDIR ${LAMBDA_TASK_ROOT}
+COPY . .
+
+# Set the CMD to your handler
+CMD [ "src.generate.lambda_handler" ]
