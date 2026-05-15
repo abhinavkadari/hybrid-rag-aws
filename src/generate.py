@@ -25,7 +25,7 @@ def query_index(index, namespace, query_vector):
         return []
     for match in results['matches']:
         logger.info(f"Score: {match['score']:.4f} | Text: {match['metadata']['text']}")
-    matches = ["\n".join(match['metadata']['text'] for match in matches)]
+    matches = ["\n".join(match['metadata']['text'] for match in results['matches'])]
     return matches
 
 def llm_call(model_name, context, user_input):
