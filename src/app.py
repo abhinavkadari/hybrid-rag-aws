@@ -5,12 +5,14 @@ from botocore.exceptions import ClientError
 import json
 import time
 import streamlit as st
+import time
 
 def generate(text):
     client = boto3.client('lambda', region_name='us-east-1')
     payload = {}
     payload["text"] = text
     try:
+        start_time = time.time()
         response = client.invoke(
                 FunctionName='Generate',
                 InvocationType='RequestResponse',
@@ -18,6 +20,8 @@ def generate(text):
             )
         result = json.loads(response['Payload'].read())['body']
         result = result.replace("\\n", "\n")
+        end_time = time.time()
+        print(f"Response generated in {end_time - start_time:.2f} seconds")
     except ClientError as e:
         print(f"Client error: {e.response['Error']['Code']}")
         result = "Error: Unable to generate response at the moment."
